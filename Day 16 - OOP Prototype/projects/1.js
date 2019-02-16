@@ -90,3 +90,28 @@ function Teacher(person, str){
 Teacher.prototype.teach = function(subject){
   return subject;
 }
+
+// ================================================================
+var methods = {
+  drive(mph) {
+    this.speed = mph;
+    return this.driver + ' driving at ' + mph + ' miles per hour';
+  },
+  loadCargo(cargo) {
+    this.cargo.push(cargo);
+    return this;
+  },
+  unloadCargo() {
+    return this.cargo.pop();
+  }
+}
+
+function vehical(driver) {
+  var obj = Object.create(methods);
+  obj.driver = driver;
+  obj.speed = 0;
+  obj.cargo = [];
+  return obj;
+}
+// ===================================================
+    
