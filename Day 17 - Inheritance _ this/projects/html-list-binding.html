@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html list binding in js</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<h1 id="title"> classes: HTML list binding</h1>
+	<input type="text" class="main-input">
+	<ul id="myList">
+		
+
+	</ul>
+	
+	<script>
+		const input = document.querySelector(".main-input");
+		const myList = document.getElementById("myList");
+		const data = JSON.parse(localStorage.getItem("list")) || [];
+
+
+		class ListBinding {
+			constructor(element, data){
+				this.listElement = element;
+				this.textList = data;
+			}
+
+			// makes an <li>text</li> element
+			static createListItem(index, text){
+				const li = document.createElement("li");
+				li.innerHTML = `<p class="para" data-key="${index}">${text}</p><span class="remove" data-key="${index}">X</span>`;
+				li.classList.add("list");
+				return li;
+			}
+
+			update(){
+				// remove all existing <li> element tags
+				while(this.listElement.firstChild){
+					this.listElement.removeChild(this.listElement.firstChild);
+				}
+
+				// fill ul/ol with li
+				for (const index in this.textList){
+					this.listElement.appendChild(ListBinding.createListItem(index, this.textList[index]));
+				}
+			}
+
+			add(text){
+				this.textList.push(text);
+				this.update();
+				this.setData();
+			}
+
+			remove(index){
+				this.textList.splice(index, 1);
+				this.update();
+			}
+			setData(){
+				localStorage.setItem("list", JSON.stringify(this.textList));
+			}
+		}
+
+		function handleEnter(e){
+			if(e.keyCode == 13){
+				if(e.target.value.trim() != ""){
+					listBinding.add(e.target.value);
+					e.target.value = "";
+				}
+			}
+		}
+
+		function removeList(e){
+			if(e.target.className === "remove"){
+				listBinding.remove(e.target.dataset.key);
+			}
+		}
+
+		const listBinding = new ListBinding(myList, data);
+		listBinding.update();
+		myList.addEventListener("click", removeList);
+		input.addEventListener("keyup", handleEnter)
+
+	</script>
+</body>
+</html>
