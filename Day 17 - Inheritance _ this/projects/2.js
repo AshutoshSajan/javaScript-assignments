@@ -35,7 +35,7 @@ var cat = new CatObject();
 // Create a class BookList
 // Create another class called Book
 class BookList{
-  constructor(book, ){
+  constructor(book){
     this.read = 0;
     this.notRead = 0;
     this.bookToRead = 0;
@@ -62,8 +62,7 @@ class Book{
     this.author = author;
     this.read = false;
     this.ReadDate = "";
-  }
-  
+  } 
 }
 
 // BookLists should have the following properties:

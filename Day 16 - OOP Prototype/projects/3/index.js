@@ -87,7 +87,7 @@ function PersonConstructor() {
 
 
 // /********* Uncomment this line to test your work! *********/
-var simon = new PersonConstructor;
+var simon = new PersonConstructor();
 // simon.greet(); // -> Logs 'hello'
 
 
@@ -210,22 +210,24 @@ User.prototype.inc = function(){ return this.score++}
 
 var a = new User("jack", 22);
 a.inc();
-// ==========================================
 
+// ==========================================
 class user{ 
-   constructor(name, age, sex, height, nationality){
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-    this.score = 0;
-        this.nationality = nationality;
-    }
-        inc(){this.score++};
-        dec(){this.score++};
-        newName(){
-          var newName = prompt("enter your name");
-          return this.name = newName;
-        }
+ constructor(name, age, sex, height, nationality){
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+  this.score = 0;
+      this.nationality = nationality;
+  }
+
+  inc(){this.score++};
+  dec(){this.score++};
+  newName(){
+    var newName = prompt("enter your name");
+    return this.name = newName;
+  }
 }
+
 var a = new user("jack", 22, "male", "6ft", "USA")
 a.newName();

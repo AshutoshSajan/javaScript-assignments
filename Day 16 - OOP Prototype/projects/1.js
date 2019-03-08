@@ -114,4 +114,32 @@ function vehical(driver) {
   return obj;
 }
 // ===================================================
-    
+
+class Vehical {
+  constructor(driver){
+    this.driver = driver;
+    this.speed = 0;
+  }
+
+  drive(mph) {
+    this.speed = mph;
+    return this.driver + ' driving at ' + mph + ' miles per hour';
+  }
+}
+
+var car = new Vehical()
+
+class Truck extends Vehical{
+  constructor(driver){
+    super(driver)
+    this.cargo = [];
+  }
+
+  loadCargo(cargo) {
+    this.cargo.push(cargo);
+    return this;
+  }
+  unloadCargo() {
+    return this.cargo.pop();
+  }
+}
