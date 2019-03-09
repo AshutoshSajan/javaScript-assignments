@@ -31,35 +31,72 @@ class Queue {
     this._storage += value + "_";
     return this._storage.split("_").filter(Boolean).join(" ").length;
   }
+
   dequeue() {
-  var array = this._storage.split("_").filter(Boolean);
-  console.log(array);
-  var last = array.splice[array.length - 1, 1];
-  console.log(last);
-  this._Storage = array.join("_");
-  return last;
-}
+    // var index = this._storage.slice(0, this._storage.length - 2).lastIndexOf("_");
+    // var last = this._storage.slice(index, this._storage.length - 2);
+    // this._storage = this._storage.slice(0, index) + "_";
+    // return last;
+
+    this._storage.split("_").pop()
+  }
+
   peek() {
-  var arr = this._storage.split("_").filter(Boolean);
-  console.log(arr);
-  return arr[arr.length - 1];
-}
+    var index = this._storage.indexOf("_");
+    return this._storage.slice(0, index);
+  }
+
   size() {
-  return this._storage.split("_").join(" ").length - 1;
+    return this._storage.split("_").join(" ").length - 1;
+  }
 }
 
 
 
 // Object Implementation
-class Queue {
-  constructor() {
+class Queue{
+  constructor(maxCapacity) {
     this._storage = {}; // Object Implementation
+  this.capacity = maxCapacity;
   }
-  isEmpty() {}
-  enqueue(value) {}
-  dequeue() {}
-  peek() {}
-  size() {}
+
+  isEmpty(){
+    if(Object.keys(this._storage).length == 0){
+      return true;
+    }
+  }
+
+  enqueue(value){
+    if (value && this.capacity && Object.keys(this._storage).length < this.capacity){
+      this._storage[value] = value;
+    } else if(value && !this.capacity){
+      this._storage[value] = value;
+    } else {
+      console.log("Max capacity already reached");
+    }
+  }
+
+  dequeue(){
+    return delete this._storage[Object.keys(this._storage).pop()];  
+  }
+
+  peek(){
+    return Object.keys(this._storage)[0];
+  }
+
+  size(){
+    return Object.keys(this._storage).length;
+  }
+
+  contains(value){
+    if(Object.values(this._storage).includes(value)){
+      return true;
+    }else {return false};
+  }
+
+  sort(){
+    return Object.values(this._storage).sort()
+  }
 }
 
 /*

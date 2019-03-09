@@ -33,11 +33,13 @@ class Stack {
   	else return this._storage += value + "_";
   }
   pop() {
-  	return this._storage = this._storage.split("_").join(" ").split(" ").filter(Boolean).pop().concat("_");
+  	// return this._storage = this._storage.split("_").join(" ").split(" ").filter(Boolean).pop().concat("_");
+  	var index = this._storage.slice(0, this._storage.length-2).lastIndexOf("_")
+  	return this._storage = this._storage.slice(0, index)
   }
   peek() {
   	var lastPush = this._storage.split("_").join(" ").split(" ").filter(Boolean);
-	return lastPush[lastPush.length-1];
+		return lastPush[lastPush.length-1];
   }
   size() {
   	return this._storage.split("_").join(" ").trim().length;
