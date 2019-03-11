@@ -1,3 +1,5 @@
 /* Default Parameter */
 
-function calculateTax()
+function calculateTax(){
+	
+}

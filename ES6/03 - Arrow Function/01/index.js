@@ -9,17 +9,25 @@ const pizzas = [
   "Margherita"
 ];
 
-pizzas.map(function(pizza) {
-  return `I 😍 ${pizza}`;
-});
+// pizzas.map(function(pizza) {
+//   return `I 😍 ${pizza}`;
+// });
+
 
 // Convert the above function into arrow function (explicit return)
-
+pizzas.map(pizza => {
+  return `I 😍 ${pizza}`;
+});
 // Convert the function into arrow function without curly braces (implicit return)
-
+pizzas.map(pizza => `I 😍 ${pizza}`)
+  
 // Convert the above function into arrow function  also take the index from map and print the message like this `0. Deep Dish`
-
+pizzas.map((pizza,index) => {
+  console.log(pizza,index)
+  return `I 😍 ${pizza}`;
+});
 // Can you name a arrow function?
+// no we can-not name a arrow function
 
 const inventors = [
   { first: "Albert", last: "Einstein", year: 1879 },
@@ -32,13 +40,13 @@ const inventors = [
 ];
 // Refactor to make it work
 const inventorsName = inventors.map(inventor => {
-  inventor.name;
+  return `${inventor.first} ${inventor.last}`;
 });
 
 // Refactor to make it work
-const nameAndIndex = inventors.map(inventor, index => {
-  [inventor.name, index];
+const nameAndIndex = inventors.map((inventor, index) => {
+  return [`${inventor.first} ${inventor.last}`, index];
 });
 
 // Refactor to make ot work
-// inventors.filter(inventor => return inventor.year > 1867);
+var arr = inventors.filter(inventor => inventor.year > 1867);

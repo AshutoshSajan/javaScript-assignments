@@ -6,7 +6,7 @@ The most important use case for generator is to use them for something where you
 Generator Function vs Normal Function
 ![Generator Function Vs Function](../assets/gen-fun.png)
 
-Example:
+`Example:
 
 ```js
 function* listOfBatches() {

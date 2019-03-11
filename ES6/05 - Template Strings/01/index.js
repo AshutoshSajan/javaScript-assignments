@@ -5,10 +5,15 @@ const user = {
 };
 
 // Use template literal and print the message
+console.log(`${user.name} is from ${user.country} and knows ${user.language.join(",")}`);
 // Alex is from Spain and knows English, Spanish, Chinese adn JavaScript
 
 // Use the above variable user and create HTML output
 // Name: Alex Country: Spain
+user.language.forEach(lang => document.body.innerHTML +=
+  `<ul class="Languages">
+    <li>${lang}</li>
+  </ul>`);
 // ul -> Languages
 //   li English
 //   li Spanish
@@ -24,6 +29,13 @@ const pizzas = [
 ];
 
 // Use above array and template literal to create select options for all the pizzas
+var HTML = `<select></select>`;
+pizzas.forEach(v => HTML += `<option value="volvo">${v}</option>`
+  );
+var select = document.createElement("select");
+select.innerHTML = HTML;
+document.body.appendChild(select);
+
 
 const beers = [
   {
@@ -64,3 +76,8 @@ const beers = [
 ];
 
 // Use the beers array and create HTML using template literal and append into div with id books
+beers.forEach(obj => books.innerHTML += 
+` <p>${obj.name}</p>
+  <p>${obj.abv}</p>
+  <p>${obj.name}</p>
+`)
