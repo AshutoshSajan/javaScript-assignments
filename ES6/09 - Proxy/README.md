@@ -35,3 +35,35 @@ userProxy.batch = "Batch 1         ";
 //   batch: "BATCH 1"
 // }
 ```
+or 
+<!-- ===================================== -->
+const user = {
+  name: "Peter Pan",
+  username: "peterpan",
+  age: 23
+};
+
+const userProxy = new Proxy(user, {
+  get(target, key) {
+    if(typeof target[key] == "String" ){
+    return target[key].toUpperCase();
+        }else {
+    return target[key];
+}
+    // You ca hijack the access property and change the output the way you want.
+  },
+  set(target, key, value){
+    return target[key] = value.toUpperCase().trim();
+    // You hijacked adding property to obj and did the required changes you wanted. Like trim and converting to uppercase.
+  }
+});
+userProxy.name;
+//  You are looking for the  {name: "Peter Pan", username: "peterpan", age: 23} name
+// userProxy.batch = "Batch 1";
+// userProxy.age;
+// userProxy = {
+//   name: "Peter Pan",
+//   username: "peterpan",
+//   age: 23,
+//   batch: "BATCH 1"
+// }

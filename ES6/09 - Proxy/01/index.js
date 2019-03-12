@@ -11,3 +11,21 @@ const phoneNumbers = {
 // Accessing the property (get)
 // When you are accessing th property it should return the phone number properly formatted
 // +91-837128937
+
+var userProxy = new Proxy(phoneNumbers, {
+	get(obj, key){
+		var a = obj[key].split("");
+		a.splice(2,0, "-");
+		return a.join("");
+	},
+	set(obj, key, value){
+		// if(prop)
+		if(typeof value != "string"){
+			throw new TypeError("value is not an integer");
+		}else if(value.length > 11){
+			throw new TypeError("invalid range");
+		}
+		obj[key] = value
+		return true;
+	}
+})

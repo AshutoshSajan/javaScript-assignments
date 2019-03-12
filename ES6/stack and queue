@@ -1,0 +1,14 @@
+stack and queue
+
+theese are two most popular data structures in programming.
+in an array we can access an element randomaly from any position which is not good. sometimes it is very risky. but by using stack and queue we can control our data according to our requirement.
+e.g if we have a box and we put some plates in it and if we want to remove the first plate which we put first in it then we have to remove all the plates one by one or we have to remove the last added plate and then so on. this is how a stack data structure works. 
+
+stack:
+stack is a data structure which is known as LIFO (last in first out), means the most recently added element added in the data is removed first. we can add data in the end and remove the last element. means we can use only push and pop methods to delete and add the data. stack data structure is helpfull when we are implimenting undo and redo in an application because it can track the latest element removed from the data.
+
+queue:
+queue is different from the stack data structure. this is known as FIFO (first in first out). we can use push to add data in the end but if we want to remove any element then we have to remove the first element of index 0.
+
+we can understand it as line of peoples in front of a ticket counter or ATM . the first man who is standing in the frist position will go first not the last man who comes recently.
+this data structure have its own importance and use 
