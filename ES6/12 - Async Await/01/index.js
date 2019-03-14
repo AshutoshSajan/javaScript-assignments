@@ -29,3 +29,10 @@ async function getData(user1, user2) {
   let githubUser2 = await githubResponse2.json(); 
 	console.log(githubUser1, githubUser2)
 }
+
+
+
+function a(arr, cb){
+  arr.forEach(v=> setTimeout(()=> cb(v), 1000))
+  console.log("hello world")
+}
